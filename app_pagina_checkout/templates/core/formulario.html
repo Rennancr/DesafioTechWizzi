@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+
+{% if error_message %}
+<p style="color: red;">{{ error_message }}</p>
+{% endif %}
+
+
+<div class="container">
+    <form method="POST" action="{% url 'checkout' %}" class="container-sm">
+        {% csrf_token %}
+
+
+        <div class="mb-2">
+            <label for="nome_passageiro">Nome do passageiro principal: </label>
+            <input type="text" class="form-control" id="nome_passageiro" name="nome_passageiro" required>
+            <div id="nome" class="form-text"></div>
+        </div>
+
+        <div class="mb-2">
+            <label for="email_passageiro">E-mail do passageiro principal: </label>
+            <input type="email" class="form-control" id="email_passageiro" name="email_passageiro" required>
+            <div id="email" class="form-text">Não compartilhamos seu e-mail com outros usuários.</div>
+        </div>
+
+
+        <div class="mb-2">
+            <label for="data_ida">Data de ida: </label>
+            <input type="date" class="form-control" id="data_ida" name="data_ida" required>
+        </div>
+        <div class="mb-2">
+            <label for="data_volta">Data de volta: </label>
+            <input type="date" class="form-control" id="data_volta" name="data_volta" required>
+        </div>
+
+
+        <div class="mb-2">
+            <label for="passageiros_adultos">Quantidade de passageiros adultos: </label>
+            <input type="number" class="form-control" id="passageiros_adultos" name="passageiros_adultos" required>
+        </div>
+
+        <div class="mb-2">
+            <label for="passageiros_criancas">Quantidade de passageiros crianças:</label>
+            <input type="number" class="form-control" id="passageiros_criancas" name="passageiros_criancas" required>
+        </div>
+
+        <div class="mb-2">
+            <label for="origem">Origem:</label>
+            <input type="text" class="form-control" id="origem" name="origem" required>
+        </div>
+
+        <div class="mb-2">
+            <label for="destino">Destino:</label>
+            <input type="text" class="form-control" id="destino" name="destino" required>
+        </div>
+
+
+        <div class="form-group">
+
+        </div>
+
+        <br/>
+        <button style="text-align: center" type="submit" class="btn btn-primary">Enviar</button>
+
+    </form>
+
+</div>
+
+
+{% endblock %}
